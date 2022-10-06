@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://usfulo7cucpj"]
+
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_i4u8m"]
+[ext_resource type="Resource" uid="uid://bb3plbeg88kso" path="res://Resources/grid.tres" id="2_gtsqe"]
+[ext_resource type="PackedScene" uid="uid://bwbh28o0gtg72" path="res://Scenes/level_map.tscn" id="2_prmxk"]
+[ext_resource type="PackedScene" uid="uid://drsa0wsavbtuu" path="res://Scenes/unit.tscn" id="4_inp4i"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_i4u8m")
+grid = ExtResource("2_gtsqe")
+
+[node name="LevelMap" parent="." instance=ExtResource("2_prmxk")]
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="Unit" parent="Units" instance=ExtResource("4_inp4i")]
+position = Vector2(190, 106)

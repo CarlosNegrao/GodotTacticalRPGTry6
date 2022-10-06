@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://5llw1nb5jh0s"]
+
+[ext_resource type="PackedScene" uid="uid://chkobhahxaj2l" path="res://Scenes/hp_bar.tscn" id="1_uvv1r"]
+[ext_resource type="Texture2D" uid="uid://lnju6wr6x12q" path="res://Art/progress_green.png" id="2_dkege"]
+
+[node name="MPBar" instance=ExtResource("1_uvv1r")]
+texture_progress = ExtResource("2_dkege")

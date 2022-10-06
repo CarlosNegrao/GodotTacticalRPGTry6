@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://drsa0wsavbtuu"]
+
+[ext_resource type="Texture2D" uid="uid://rqfpwysbcag4" path="res://Art/soldier.png" id="1_3deny"]
+[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_synjy"]
+[ext_resource type="Shader" path="res://Scenes/unit.gdshader" id="2_rp3ro"]
+[ext_resource type="PackedScene" uid="uid://borny1o4vgsi7" path="res://Scenes/stats.tscn" id="3_aomab"]
+[ext_resource type="PackedScene" uid="uid://chkobhahxaj2l" path="res://Scenes/hp_bar.tscn" id="4_uac4f"]
+[ext_resource type="PackedScene" uid="uid://5llw1nb5jh0s" path="res://Scenes/mp_bar.tscn" id="5_3bpl8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5my7"]
+shader = ExtResource("2_rp3ro")
+shader_parameter/line_color = null
+shader_parameter/line_thickness = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lh4h"]
+atlas = ExtResource("1_3deny")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fauhw"]
+animations = [{
+"frames": [SubResource("AtlasTexture_0lh4h")],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_synjy")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_c5my7")
+use_parent_material = true
+frames = SubResource("SpriteFrames_fauhw")
+
+[node name="Stats" parent="." instance=ExtResource("3_aomab")]
+Name = ""
+Max_HP = 10
+Max_MP = 10
+Str = 0
+Dex = 0
+Wis = 0
+Con = 0
+Int = 0
+
+[node name="Bars" type="Node2D" parent="."]
+position = Vector2(2, -37)
+
+[node name="HPBar" parent="Bars" instance=ExtResource("4_uac4f")]
+offset_left = -22.0
+offset_top = 3.0
+offset_right = 20.0
+metadata/_edit_lock_ = true
+
+[node name="MPBar" parent="Bars" instance=ExtResource("5_3bpl8")]
+offset_left = -22.0
+offset_top = 11.0
+offset_right = 20.0
+offset_bottom = 19.0
+texture_over = null
+metadata/_edit_lock_ = true
+
+[node name="Equipment" type="Node2D" parent="."]
+
+[connection signal="hp_changed" from="Stats" to="." method="_on_stats_hp_changed"]
+[connection signal="mp_changed" from="Stats" to="." method="_on_stats_mp_changed"]

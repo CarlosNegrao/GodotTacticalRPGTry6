@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bb3plbeg88kso"]
+
+[ext_resource type="Script" path="res://Scripts/grid.gd" id="1_lef6r"]
+
+[resource]
+script = ExtResource("1_lef6r")
+metadata/_editor_prop_ptr_tilemap = NodePath("LevelMap")
