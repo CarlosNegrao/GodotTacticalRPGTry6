@@ -29,8 +29,6 @@ func _process(delta):
 			var pos = get_global_mouse_position()
 			var grid_position = grid.to_grid(pos)
 			_select_unit(grid_position)
-			print(grid_position)
-			print(_unit_positions)
 
 
 # public methods
